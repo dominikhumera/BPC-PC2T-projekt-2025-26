@@ -25,7 +25,8 @@ public class Databaza {
 		Zamestnanec z = databaza.get(ID);
 		if(z==null) return false;
 		System.out.println("Meno: " + z.getMeno() + "   Priezvisko: " + z.getPriezvisko() + "   Rok narodenia: " + z.getRok());
-
+		System.out.println("ID:" + ID);
+		
 		if (z instanceof Analytik) {          
 			System.out.println("Analytik");
 		} 
