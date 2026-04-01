@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class Databaza {
 
-	private Map<Integer, Zamestnanec> databaza;
+	public Map<Integer, Zamestnanec> databaza;
 	
 
 	public Databaza(){
@@ -22,6 +22,7 @@ public class Databaza {
 	
 	public boolean getZamestnanec(int ID)
 	{
+
 		Zamestnanec z = databaza.get(ID);
 		if(z==null) return false;
 		System.out.println("Meno: " + z.getMeno() + "   Priezvisko: " + z.getPriezvisko() + "   Rok narodenia: " + z.getRok());
@@ -37,4 +38,32 @@ public class Databaza {
 		 return true;
 
 	}
+	
+	public void setSpolupraca(int ID1, int ID2, int s)
+	{
+		Zamestnanec z1 = databaza.get(ID1);
+		z1.setSpolupraca(ID2,s);
+		databaza.put(ID1, z1);
+		
+		Zamestnanec z2 = databaza.get(ID2);
+		z2.setSpolupraca(ID1,s);
+		databaza.put(ID2, z2);	
+		
+	}
+	
+	public void getSpolupraca(int ID1, int ID2)
+	{
+		Zamestnanec z1 = databaza.get(ID1);
+		int s = z1.getSpolupraca(ID2);
+		System.out.println("Hodnota spoluprace medzi zamestanancom s ID:" + ID1 + " a s ID:" + ID2 + " je:" + s);	
+	}
+		
+	
+	public boolean klucCheck(int kluc) {
+		
+		if(databaza.containsKey(kluc)) return true;
+		return false;
+	
+	}
+	
 }

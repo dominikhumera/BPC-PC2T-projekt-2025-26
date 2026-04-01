@@ -10,18 +10,24 @@ public class main {
 		String priezvisko;
 		String skupina;
 		int ID = 0;
+		int ID1;
+		int ID2;
 		int rok;
+		int spolupraca;
 		Databaza databaza = new Databaza();
 		
 		while(!koniec) {
 			
 			System.out.println("1. Pridaj zamestnanca");
 			System.out.println("2. Vypis zamestnanca podla ID");
-			System.out.println("3. KONIEC");
+			System.out.println("3. Nastavenie spoluprace");
+			System.out.println("4. Vypis spoluprace");
+			System.out.println("5. KONIEC");
 			volba=intCheck(sc);
 			
 			switch(volba) {
-			case 3: 
+			
+			case 5: 
 				
 				koniec = true;
 				break;
@@ -51,15 +57,27 @@ public class main {
 				int currentID = intCheck(sc);
 				databaza.getZamestnanec(currentID);
 				break;
-			}
-			
-			
-			
-			
-			
-			
-			
-			
+				
+			case 3:
+				
+				System.out.println("Zadajte ID prveho zamestnance pre nastavenie spoluprace:");
+				ID1 = IDcheck(sc, databaza);
+				System.out.println("Zadajte ID druheho zamestnance pre nastavenie spoluprace:");
+				ID2 = IDcheck(sc, databaza);
+				System.out.println("Zadajte hodnotu spoluprace:");
+				spolupraca = intCheck(sc);
+				databaza.setSpolupraca(ID1, ID2, spolupraca);
+				break;
+				
+			case 4:
+				System.out.println("Zadajte ID prveho zamestnanca:");
+				ID1 = IDcheck(sc, databaza);
+				System.out.println("Zadajte ID druheho zamestnanca:");
+				ID2 = IDcheck(sc, databaza);
+				databaza.getSpolupraca(ID1, ID2);
+				break;
+
+			}			
 			
 		}
 
@@ -81,5 +99,28 @@ public class main {
 		}
 		return cislo;
 	}
+	
+	public static int IDcheck(Scanner sc, Databaza databaza) 
+	{
+		int cislo = 0;
+		try
+		{
+			cislo = sc.nextInt();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Nastala vyjimka typu "+e.toString());
+			System.out.println("zadejte prosim cele cislo ");
+			sc.nextLine();
+			cislo = intCheck(sc);
+		}
+		
+		if(databaza.klucCheck(cislo)) return cislo;
+			
+		System.out.println("ID neexistuje, skuste znova.");
+		IDcheck(sc, databaza);
+		return cislo;
+	}
+
 }
 

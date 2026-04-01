@@ -1,10 +1,11 @@
 
-public class Zamestnanec {
+abstract class Zamestnanec {
 
 	private int ID;
 	private String priezvisko;
 	private String meno;
 	private int rok;
+	private Spolupraca spolupraca;
 
 	public Zamestnanec(String meno, String priezvisko, int rok, int ID) {
 		
@@ -12,6 +13,7 @@ public class Zamestnanec {
 		this.priezvisko = priezvisko;
 		this.meno = meno;
 		this.rok = rok;
+		this.spolupraca = new Spolupraca();
 		
 	}
 	
@@ -34,4 +36,17 @@ public class Zamestnanec {
 	{
 		return rok;
 	}
+	
+	public void setSpolupraca(int ID1, int s) {
+		
+		spolupraca.setHodnotaSpoluprace(ID1, s);
+		
+	}
+	
+	public int getSpolupraca(int ID1) {
+		
+		return spolupraca.getHodnotaSpoluprace(ID1);
+		
+	}
+	
 }
