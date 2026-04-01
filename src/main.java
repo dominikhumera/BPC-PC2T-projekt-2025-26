@@ -22,12 +22,13 @@ public class main {
 			System.out.println("2. Vypis zamestnanca podla ID");
 			System.out.println("3. Nastavenie spoluprace");
 			System.out.println("4. Vypis spoluprace");
-			System.out.println("5. KONIEC");
-			volba=intCheck(sc);
+			System.out.println("5. Vymazanie zamestnanca");
+			System.out.println("6. KONIEC");
+			volba = intCheck(sc);
 			
 			switch(volba) {
 			
-			case 5: 
+			case 6: 
 				
 				koniec = true;
 				break;
@@ -42,41 +43,61 @@ public class main {
 				rok = intCheck(sc);
 				ID++;
 				System.out.println("Vyberte skupinu pre zamestanca Analytik/Bezpecak");
-				skupina = sc.next();
-				if(skupina.equals("Bezpecak")) {
-					databaza.setBezpecak(meno, priezvisko, rok, ID);
-				}
-				if(skupina.equals("Analytik")) {
-					databaza.setAnalytik(meno, priezvisko, rok, ID);
+				while(true) {
+					skupina = sc.next();
+					if(skupina.equals("Bezpecak")) {
+						databaza.setBezpecak(meno, priezvisko, rok, ID);
+						break;
+					}
+					else if(skupina.equals("Analytik")) {
+						databaza.setAnalytik(meno, priezvisko, rok, ID);
+						break;
+					}
+					else {
+						System.out.println("Zadajte Analytik alebo Bezpecak!!!");
+					}
 				}
 				break;
 				
 			case 2:
 				
 				System.out.println("Zadajte ID zamestnanca");
-				int currentID = intCheck(sc);
-				databaza.getZamestnanec(currentID);
+				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
+				databaza.getZamestnanec(ID1);
 				break;
 				
 			case 3:
 				
 				System.out.println("Zadajte ID prveho zamestnance pre nastavenie spoluprace:");
 				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
 				System.out.println("Zadajte ID druheho zamestnance pre nastavenie spoluprace:");
 				ID2 = IDcheck(sc, databaza);
+				if (ID2 == -1) break;
 				System.out.println("Zadajte hodnotu spoluprace:");
 				spolupraca = intCheck(sc);
 				databaza.setSpolupraca(ID1, ID2, spolupraca);
 				break;
 				
 			case 4:
+				
 				System.out.println("Zadajte ID prveho zamestnanca:");
 				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
 				System.out.println("Zadajte ID druheho zamestnanca:");
 				ID2 = IDcheck(sc, databaza);
+				if (ID2 == -1) break;
 				databaza.getSpolupraca(ID1, ID2);
 				break;
-
+				
+			case 5:
+				
+				System.out.println("Zadajte ID zamestananca pre vymazanie:");
+				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
+				databaza.delete(ID1);
+				break;
 			}			
 			
 		}
@@ -103,23 +124,24 @@ public class main {
 	public static int IDcheck(Scanner sc, Databaza databaza) 
 	{
 		int cislo = 0;
-		try
-		{
-			cislo = sc.nextInt();
-		}
-		catch(Exception e)
-		{
-			System.out.println("Nastala vyjimka typu "+e.toString());
-			System.out.println("zadejte prosim cele cislo ");
-			sc.nextLine();
-			cislo = intCheck(sc);
-		}
 		
-		if(databaza.klucCheck(cislo)) return cislo;
+		while(true) {
+			try
+			{
+				cislo = sc.nextInt();
+			}
+			catch(Exception e)
+			{
+				System.out.println("Zadejte prosim cele cislo ");
+				sc.nextLine();
+				cislo = intCheck(sc);
+			}
 			
-		System.out.println("ID neexistuje, skuste znova.");
-		IDcheck(sc, databaza);
-		return cislo;
+			if(databaza.klucCheck(cislo) && cislo > 0) return cislo;
+			if(cislo == -1) return -1;
+			System.out.println("ID neexistuje, skuste znova.");
+			System.out.println("Pre zrusenie napiste -1");
+		}
 	}
 
 }

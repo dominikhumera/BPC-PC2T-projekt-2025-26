@@ -66,4 +66,8 @@ public class Databaza {
 	
 	}
 	
+	public void delete(int ID) {
+		databaza.remove(ID);
+	}
+	
 }
