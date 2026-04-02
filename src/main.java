@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
 
 public class main {
 
@@ -23,12 +26,13 @@ public class main {
 			System.out.println("3. Nastavenie spoluprace");
 			System.out.println("4. Vypis spoluprace");
 			System.out.println("5. Vymazanie zamestnanca");
-			System.out.println("6. KONIEC");
+			System.out.println("6. Statistika spoluprace pracovnika");
+			System.out.println("7. KONIEC");
 			volba = intCheck(sc);
 			
 			switch(volba) {
 			
-			case 6: 
+			case 7: 
 				
 				koniec = true;
 				break;
@@ -75,6 +79,10 @@ public class main {
 				System.out.println("Zadajte ID druheho zamestnance pre nastavenie spoluprace:");
 				ID2 = IDcheck(sc, databaza);
 				if (ID2 == -1) break;
+				if(ID1==ID2) {
+					System.out.println("Musia byt rozne ID");
+					break;
+				}
 				System.out.println("Zadajte hodnotu spoluprace:");
 				spolupraca = intCheck(sc);
 				databaza.setSpolupraca(ID1, ID2, spolupraca);
@@ -88,6 +96,10 @@ public class main {
 				System.out.println("Zadajte ID druheho zamestnanca:");
 				ID2 = IDcheck(sc, databaza);
 				if (ID2 == -1) break;
+				if(ID1==ID2) {
+					System.out.println("Musia byt rozne ID");
+					break;
+				}
 				databaza.getSpolupraca(ID1, ID2);
 				break;
 				
@@ -96,9 +108,17 @@ public class main {
 				System.out.println("Zadajte ID zamestananca pre vymazanie:");
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
-				databaza.deleteSpolupraca(ID1, databaza);
+				databaza.zrusenieSpoluprace(ID1);
 				databaza.deleteZamestnanec(ID1);
 				break;
+				
+			case 6:
+				
+				System.out.println("Zadajte ID zamestnanca:");
+				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
+				databaza.getStatistika(ID1);
+				
 			}			
 			
 		}
@@ -114,7 +134,6 @@ public class main {
 		}
 		catch(Exception e)
 		{
-			System.out.println("Nastala vyjimka typu "+e.toString());
 			System.out.println("zadejte prosim cele cislo ");
 			sc.nextLine();
 			cislo = intCheck(sc);

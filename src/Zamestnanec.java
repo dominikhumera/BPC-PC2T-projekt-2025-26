@@ -46,8 +46,12 @@ abstract class Zamestnanec {
 	}
 	
 	
-	public void delete(int ID) {
-		spolupraca.delete(ID);
+	public void statistika() {
+		spolupraca.statistikaSpoluprace();
+	}
+	
+	public void zrusenieSpoluprace(int ID) {
+		spolupraca.zrusenieSpoluprace(ID);
 	}
 	
 	

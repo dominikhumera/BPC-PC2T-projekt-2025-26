@@ -66,22 +66,25 @@ public class Databaza {
 	
 	}
 	
-	public void deleteSpolupraca(int ID, Databaza d) {
-		databaza.remove(ID);
-	}
 	
 	public void deleteZamestnanec(int ID) {
 		databaza.remove(ID);
 	}
-
-	public Zamestnanec getKluc(int kluc) {
-		return databaza.get(kluc);
+	
+	
+	public void getStatistika(int ID)
+	{
+		Zamestnanec z = databaza.get(ID);
+		z.statistika();
 	}
 	
-	public void zmenaZamestnanec(int ID, Zamestnanec z) {
-		databaza.put(ID,z);
+	public void zrusenieSpoluprace(int ID) {
+		for(int key : databaza.keySet()) {
+			Zamestnanec z = databaza.get(key);
+			z.zrusenieSpoluprace(ID);
+		}
+		
 	}
-
 	
 	
 }
