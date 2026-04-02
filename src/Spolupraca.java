@@ -22,4 +22,17 @@ public class Spolupraca {
 		return spolupraca.get(ID);
 	}
 	
+	public void delete(int ID) 
+	{
+		spolupraca.remove(ID);	
+	}
+	
+	public void zrusenieSpoluprace(Databaza d, int ID) {
+		for (int kluc : spolupraca.keySet()) {
+			Zamestnanec z = d.getKluc(kluc);
+			z.delete(ID);
+			d.zmenaZamestnanec(ID,z);
+	    }
+	}
+	
 }

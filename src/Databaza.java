@@ -66,8 +66,22 @@ public class Databaza {
 	
 	}
 	
-	public void delete(int ID) {
+	public void deleteSpolupraca(int ID, Databaza d) {
 		databaza.remove(ID);
 	}
+	
+	public void deleteZamestnanec(int ID) {
+		databaza.remove(ID);
+	}
+
+	public Zamestnanec getKluc(int kluc) {
+		return databaza.get(kluc);
+	}
+	
+	public void zmenaZamestnanec(int ID, Zamestnanec z) {
+		databaza.put(ID,z);
+	}
+
+	
 	
 }

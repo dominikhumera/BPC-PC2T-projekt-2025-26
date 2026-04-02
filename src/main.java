@@ -96,7 +96,8 @@ public class main {
 				System.out.println("Zadajte ID zamestananca pre vymazanie:");
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
-				databaza.delete(ID1);
+				databaza.deleteSpolupraca(ID1, databaza);
+				databaza.deleteZamestnanec(ID1);
 				break;
 			}			
 			

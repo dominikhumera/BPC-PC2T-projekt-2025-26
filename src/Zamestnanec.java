@@ -38,15 +38,18 @@ abstract class Zamestnanec {
 	}
 	
 	public void setSpolupraca(int ID1, int s) {
-		
 		spolupraca.setHodnotaSpoluprace(ID1, s);
-		
 	}
 	
 	public int getSpolupraca(int ID1) {
-		
 		return spolupraca.getHodnotaSpoluprace(ID1);
-		
 	}
+	
+	
+	public void delete(int ID) {
+		spolupraca.delete(ID);
+	}
+	
+	
 	
 }
