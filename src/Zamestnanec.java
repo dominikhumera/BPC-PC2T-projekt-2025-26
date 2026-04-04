@@ -10,7 +10,7 @@ abstract class Zamestnanec {
     private String meno;
     private int rok;
     
-    private Map<Integer, Integer> spolupraca;
+    protected Map<Integer, Integer> spolupraca;
 
     public Zamestnanec(String meno, String priezvisko, int rok, int ID) {
         this.ID = ID;
@@ -20,7 +20,7 @@ abstract class Zamestnanec {
         this.spolupraca = new HashMap<>();
     }
 
-    abstract void dovednost();
+    abstract void dovednost(Map<Integer, Zamestnanec> all);
 
     public String getMeno() {
         return meno;
@@ -37,21 +37,28 @@ abstract class Zamestnanec {
     public int getRok() {
         return rok;
     }
-
+    
     
     public void setSpolupraca(int ID1, int s) {
         spolupraca.put(ID1, s);
     }
 
-    public int getSpolupraca(int ID1) {
+    public int getHodnotaSpoluprace(int ID1) {
         return spolupraca.get(ID1);
+    }
+    
+    public Map<Integer, Integer> getSpolupraca() {
+        return spolupraca;
+    }
+    
+    public Map<Integer, Integer> getDatabazaSpoluprace() {
+        return spolupraca;
     }
 
     public void zrusenieSpoluprace(int ID) {
         spolupraca.remove(ID);
     }
 
-    // Zachovaná tvoja pôvodná logika výpisov
     public void statistika() {
 
         if (spolupraca.isEmpty()) {

@@ -1,3 +1,4 @@
+import java.util.Map;
 
 public class Bezpecak extends Zamestnanec {
 	
@@ -6,8 +7,10 @@ public class Bezpecak extends Zamestnanec {
 	}
 
 	@Override
-	void dovednost() {
-		// TODO Auto-generated method stub
+	void dovednost(Map<Integer, Zamestnanec> vsetci) {
+		 
+			 
+			 
 		
 	}
 	

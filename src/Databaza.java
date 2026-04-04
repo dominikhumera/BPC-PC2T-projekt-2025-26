@@ -20,7 +20,7 @@ public class Databaza {
 		databaza.put(ID, new Bezpecak(meno, priezvisko, rok, ID));
 	}
 	
-	public boolean getZamestnanec(int ID)
+	public boolean getInfoZamestnanec(int ID)
 	{
 
 		Zamestnanec z = databaza.get(ID);
@@ -39,6 +39,11 @@ public class Databaza {
 
 	}
 	
+	public Zamestnanec getZamestnanec(int ID)
+	{
+		return databaza.get(ID);
+	}
+	
 	public void setSpolupraca(int ID1, int ID2, int s)
 	{
 		Zamestnanec z1 = databaza.get(ID1);
@@ -54,7 +59,7 @@ public class Databaza {
 	public void getSpolupraca(int ID1, int ID2)
 	{
 		Zamestnanec z1 = databaza.get(ID1);
-		int s = z1.getSpolupraca(ID2);
+		int s = z1.getHodnotaSpoluprace(ID2);
 		System.out.println("Hodnota spoluprace medzi zamestanancom s ID:" + ID1 + " a s ID:" + ID2 + " je:" + s);	
 	}
 		
@@ -86,5 +91,11 @@ public class Databaza {
 		
 	}
 	
+	public void spustiDovednost(int ID) {
+	    Zamestnanec z = databaza.get(ID);
+	    if (z != null) {
+	        z.dovednost(this.databaza);
+	    }
+	}
 	
 }

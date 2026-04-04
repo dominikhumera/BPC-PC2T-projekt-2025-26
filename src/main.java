@@ -27,12 +27,13 @@ public class main {
 			System.out.println("4. Vypis spoluprace");
 			System.out.println("5. Vymazanie zamestnanca");
 			System.out.println("6. Statistika spoluprace pracovnika");
-			System.out.println("7. KONIEC");
+			System.out.println("7. Spustit dovednost pracovnika");
+			System.out.println("8. KONIEC");
 			volba = intCheck(sc);
 			
 			switch(volba) {
 			
-			case 7: 
+			case 8: 
 				
 				koniec = true;
 				break;
@@ -68,7 +69,7 @@ public class main {
 				System.out.println("Zadajte ID zamestnanca");
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
-				databaza.getZamestnanec(ID1);
+				databaza.getInfoZamestnanec(ID1);
 				break;
 				
 			case 3:
@@ -118,6 +119,13 @@ public class main {
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
 				databaza.getStatistika(ID1);
+				
+			case 7:
+				
+				System.out.println("Zadajte ID zamestnanca:");
+				ID1 = IDcheck(sc, databaza);
+				if (ID1 == -1) break;
+				databaza.spustiDovednost(ID1);
 				
 			}			
 			
