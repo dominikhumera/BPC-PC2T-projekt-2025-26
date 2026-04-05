@@ -3,7 +3,7 @@ import java.util.Map;
 
 public class Databaza {
 
-	public Map<Integer, Zamestnanec> databaza;
+	private Map<Integer, Zamestnanec> databaza;
 	
 
 	public Databaza(){

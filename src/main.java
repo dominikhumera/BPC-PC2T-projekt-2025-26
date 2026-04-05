@@ -119,6 +119,7 @@ public class main {
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
 				databaza.getStatistika(ID1);
+				break;
 				
 			case 7:
 				
@@ -126,6 +127,7 @@ public class main {
 				ID1 = IDcheck(sc, databaza);
 				if (ID1 == -1) break;
 				databaza.spustiDovednost(ID1);
+				break;
 				
 			}			
 			
