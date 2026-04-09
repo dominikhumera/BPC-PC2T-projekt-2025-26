@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Databaza {
@@ -96,6 +99,22 @@ public class Databaza {
 	    if (z != null) {
 	        z.dovednost(this.databaza);
 	    }
+	}
+	
+	public void abecedneZoradenie() {
+		
+		List<String> zoradeneMena = new ArrayList<>();
+		Collections.sort(zoradeneMena);
+		for (Zamestnanec z : databaza.values()) {
+	        zoradeneMena.add(z.getPriezvisko() + " " + z.getMeno());
+	    }
+	    
+	    Collections.sort(zoradeneMena);
+	    
+	    for (String meno : zoradeneMena) {
+	        System.out.println(meno);
+	    }
+		
 	}
 	
 }

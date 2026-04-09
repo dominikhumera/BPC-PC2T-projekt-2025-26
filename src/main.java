@@ -1,3 +1,5 @@
+
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -26,12 +28,13 @@ public class main {
 			System.out.println("5. Vymazanie zamestnanca");
 			System.out.println("6. Statistika spoluprace pracovnika");
 			System.out.println("7. Spustit dovednost pracovnika");
-			System.out.println("8. KONIEC");
+			System.out.println("8. Abecedny vypis zamestanancov");
+			System.out.println("9. KONIEC");
 			volba = intCheck(sc);
 			
 			switch(volba) {
 			
-			case 8: 
+			case 9: 
 				
 				koniec = true;
 				break;
@@ -127,6 +130,10 @@ public class main {
 				databaza.spustiDovednost(ID1);
 				break;
 				
+			case 8:
+				
+				databaza.abecedneZoradenie();		
+				break;
 			}			
 			
 		}
