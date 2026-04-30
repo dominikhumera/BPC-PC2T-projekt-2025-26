@@ -1,5 +1,4 @@
 
-import java.util.Map;
 import java.util.Scanner;
 
 
@@ -18,6 +17,7 @@ public class main {
 		int rok;
 		int spolupraca;
 		Databaza databaza = new Databaza();
+		databaza.nacitat();
 		
 		while(!koniec) {
 			
@@ -137,6 +137,9 @@ public class main {
 			}			
 			
 		}
+
+		databaza.ulozit();
+		sc.close();
 
 	}
 
