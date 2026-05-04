@@ -17,7 +17,7 @@ public class Analytik extends Zamestnanec {
 		
 		for (Zamestnanec ostatni : vsetci.values()) {
 			
-			if (ostatni.getID() == mojeID) continue; // vynechanie zistovaneho zamestnanca
+			if (ostatni.getID() == mojeID) continue;
 			
 			Set<Integer> spolupracovniciTest = ostatni.getDatabazaSpoluprace().keySet();
 			

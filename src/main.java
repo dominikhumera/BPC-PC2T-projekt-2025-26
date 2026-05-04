@@ -176,7 +176,6 @@ public class Main {
 			
 		}
 
-		// save DB and persist last used ID
 		databaza.ulozit();
 		databaza.ulozitSQL();
 		writeLastID(ID);

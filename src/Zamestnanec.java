@@ -68,7 +68,7 @@ abstract class Zamestnanec {
         
         int pocetSpolupraci = spolupraca.size();
         int sum = 0;
-        float priemerSpolupraca = 0;
+        float priemerSpolupraca;
         int max = 0;
         int min = Integer.MAX_VALUE;
         List<Integer> maxSpolupraca = new ArrayList<>();
